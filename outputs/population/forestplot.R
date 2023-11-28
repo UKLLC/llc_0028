@@ -7,13 +7,13 @@ library(tidyverse)
 library(ggplot2) 
 
 #read in data, covid < 12 weeks ago
-dta = read.csv('./raw_data/lr_results_0_1_core_.csv')
+dta = read.csv('lr_results_0_1_core_.csv')
 
 #convert to dataframe
 data_l12<-data.frame(dta)
 
 #read in data, covid <>12 weeks ago
-dta = read.csv('./raw_data/lr_results_0_2_core_.csv')
+dta = read.csv('lr_results_0_2_core_.csv')
 
 #convert to dataframe
 data_g12<-data.frame(dta)
@@ -27,7 +27,7 @@ forest_data_l12 <- tibble::tibble(mean = data_l12$Estimate,
                               symptom = data_l12$X,
                               OR = round(data_l12$Estimate, digits=2))
 
-forest_data_l12 |> 
+fplot <- forest_data_l12 |> 
   forestplot(labeltext = c(symptom,OR),
              title = 'No Covid vs Covid < 12 weeks ago',
              xlog = TRUE)|>
@@ -37,8 +37,6 @@ forest_data_l12 |>
   fp_add_header(symptom = c("", "Symptom"),
                 OR = c("", "OR"))
 
-# save
-ggsave('individual_symptom_ORs_1.pdf')
 
 ###############################
 #plot for covid > 12 weeks ago#
@@ -58,8 +56,6 @@ forest_data_g12 |>
                summary = "royalblue") |> 
   fp_add_header(symptom = c("", "Symptom"),
                 OR = c("", "OR"))
-#save
-ggsave('individual_symptom_ORs_2.pdf')
 
 
 
