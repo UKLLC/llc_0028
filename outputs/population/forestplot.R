@@ -89,7 +89,7 @@ p <- ggplot(df, aes(x=symptom, y=OR, ymin=lower, ymax=upper,
   scale_fill_manual(values=barCOLS)+
   scale_color_manual(values=dotCOLS)+
   scale_x_discrete(name="Symptoms") +
-  scale_y_continuous(name="Odds ratio", limits = c(0.5, 12),  trans='log2') +
+  scale_y_continuous(name="Odds ratio", limits = c(0.5, 14.5),  trans='log2') +
   coord_flip() +
   theme_minimal()+
   labs(title = 'Symptom ORs, (reference category: No Covid)')
