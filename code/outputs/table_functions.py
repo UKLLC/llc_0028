@@ -101,6 +101,8 @@ def table1(df):
     t1 = t1.reindex(row_order)
 
     t1 = t1.reset_index()
+    
+    #
 
     ssize = [int(v.split(' ')[0]) for v in t1.iloc[0][1:]]
     asymptomatic = [int(v.split(' ')[0]) for v in t1.iloc[1][1:]]
@@ -108,10 +110,10 @@ def table1(df):
     symptomatic = np.array(ssize) - np.array(asymptomatic)
 
     symptomatic = pd.DataFrame.from_dict({'Covariate': 'Symptomatic, N(%)',
-                  'All participants': [f'{symptomatic[0]} ({float(int(symptomatic[0]*100/ssize[0]))})'],
-                  'No covid': [f'{symptomatic[1]} ({float(int(symptomatic[1]*100/ssize[1]))})'],
-                  'Covid < 12 weeks ago': [f'{symptomatic[2]} ({float(int(symptomatic[2]*100/ssize[2]))})'],
-                  'Covid > 12 weeks ago': [f'{symptomatic[3]} ({float(int(symptomatic[3]*100/ssize[3]))})']})
+                  'All participants': [f'{symptomatic[0]} ({int(symptomatic[0]*100/ssize[0])})'],
+                  'No covid': [f'{symptomatic[1]} ({int(symptomatic[1]*100/ssize[1])})'],
+                  'Covid < 12 weeks ago': [f'{symptomatic[2]} ({int(symptomatic[2]*100/ssize[2])})'],
+                  'Covid > 12 weeks ago': [f'{symptomatic[3]} ({int(symptomatic[3]*100/ssize[3])})']})
 
     t1 = pd.concat([symptomatic, t1], ignore_index=True)
 

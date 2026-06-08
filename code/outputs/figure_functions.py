@@ -185,7 +185,7 @@ def forest_plot(results, color,
     else:
         
         for j,t in enumerate(ax.yaxis.get_ticklabels()):
-            t.set_fontsize(9)
+            t.set_fontsize(10)
             if j in [4,7,9,14]:
                 t.set_weight('bold')
 
@@ -194,8 +194,8 @@ def forest_plot_row(subfig, title, df, color,
                     covar_order, letters, letter_count, 
                     class_dict, all_categories):
     
-    subfig.suptitle(title,fontsize=9, 
-                    fontweight='bold', x=0.62, 
+    subfig.suptitle(title,fontsize=10, 
+                    fontweight='bold', x=0.63, 
                     ha = 'center')
     
     axs = subfig.subplots(nrows=1, ncols=3, sharey=True)
